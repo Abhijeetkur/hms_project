@@ -1,0 +1,85 @@
+{
+  "C:\\Django\\email_service\\serverless.yml": {
+    "versionFramework": "4.34.0",
+    "servicePath": "C:\\Django\\email_service\\serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "org": "medicore",
+      "app": "hms-email-service",
+      "service": "hms-email-service",
+      "provider": {
+        "name": "aws",
+        "runtime": "python3.9",
+        "region": "us-east-1",
+        "environment": {
+          "SMTP_HOST": "smtp.gmail.com",
+          "SMTP_PORT": 587,
+          "SMTP_USER": "ak9111709@gmail.com",
+          "SMTP_PASSWORD": "<REDACTED>"
+        },
+        "stage": "dev",
+        "versionFunctions": true
+      },
+      "plugins": [
+        "serverless-offline"
+      ],
+      "functions": {
+        "sendNotification": {
+          "handler": "handler.send_email",
+          "events": [
+            {
+              "httpApi": {
+                "path": "/send-email",
+                "method": "post"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "python3.9",
+      "region": "us-east-1",
+      "environment": {
+        "SMTP_HOST": "smtp.gmail.com",
+        "SMTP_PORT": 587,
+        "SMTP_USER": "ak9111709@gmail.com",
+        "SMTP_PASSWORD": "<REDACTED>"
+      },
+      "stage": "dev",
+      "versionFunctions": true
+    },
+    "dashboard": {
+      "isEnabledForService": true,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": {
+        "providers": false,
+        "monitoring": false
+      },
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": "LqjF2MsTlPyvwTDQ1c",
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "error": {
+      "message": "Serverless command \"service\" not found. Run \"serverless help\" for a list of all available commands.",
+      "code": "UNRECOGNIZED_CLI_COMMAND"
+    },
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: medicore\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: hms-email-service\nservice: hms-email-service\n\nprovider:\n  name: aws\n  runtime: python3.9\n  region: us-east-1\n  environment:\n    SMTP_HOST: smtp.gmail.com\n    SMTP_PORT: 587\n    SMTP_USER: \"ak9111709@gmail.com\"\n    SMTP_PASSWORD: \"sdqb sgon kuys oxpt\"\n\nplugins:\n  - serverless-offline\n\nfunctions:\n  sendNotification:\n    handler: handler.send_email\n    events:\n      - httpApi:\n          path: /send-email\n          method: post\n",
+    "command": [
+      "service"
+    ],
+    "options": {},
+    "orgId": "1b1ab00b-3ce0-4f21-babf-da5005c4d381",
+    "orgName": "medicore",
+    "userId": "wdhsPpVpxMpMFyMvRP",
+    "userName": "medicore",
+    "serviceProviderAwsAccountId": "185263397630",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}

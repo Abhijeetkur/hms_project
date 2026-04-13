@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - MediCore{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="title">Welcome Back</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="helptext">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn full-width">Sign In</button>
+    </form>
+
+    <div style="margin: 1.5rem 0; display: flex; align-items: center; gap: 1rem;">
+        <hr style="flex: 1; border: none; border-top: 1px solid rgba(0,0,0,0.1);">
+        <span style="font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">OR</span>
+        <hr style="flex: 1; border: none; border-top: 1px solid rgba(0,0,0,0.1);">
+    </div>
+
+    <a href="{% url 'google_login' %}?role=login" class="btn btn-outline full-width" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: white;">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="G" width="20">
+        Continue with Google
+    </a>
+
+    <div class="auth-links">
+        <p>Don't have an account? <a href="{% url 'signup_patient' %}">Create one</a></p>
+    </div>
+</div>
+{% endblock %}

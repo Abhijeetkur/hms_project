@@ -1,0 +1,26 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: medicore
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: hms-email-service
+service: hms-email-service
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  environment:
+    SMTP_HOST: smtp.gmail.com
+    SMTP_PORT: 587
+    SMTP_USER: "ak9111709@gmail.com"
+    SMTP_PASSWORD: "sdqb sgon kuys oxpt"
+
+plugins:
+  - serverless-offline
+
+functions:
+  sendNotification:
+    handler: handler.send_email
+    events:
+      - httpApi:
+          path: /send-email
+          method: post
